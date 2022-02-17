@@ -30,5 +30,4 @@ def app():
         fig.add_trace(go.Bar(x=df.need_type,
                              y=df.number_of_needs_met,
                              name='number_of_needs_met'))
-        # Fixed display issue with Heatmap by returning value inside if statement
         st.plotly_chart(fig, use_container_width=True)

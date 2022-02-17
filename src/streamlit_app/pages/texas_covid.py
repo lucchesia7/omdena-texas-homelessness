@@ -16,7 +16,7 @@ def app():
     data = pd.read_csv(filepath)
 
     chart_visual = st.sidebar.selectbox("Select Charts/Plot type", 
-                                        ('Line Chart', 'Bar Chart', 'Bubble Chart'))
+                                        ('Bar Chart', 'Bubble Chart'))
 
     st.sidebar.checkbox("Show Analysis by Cases", True, key=1)
     selected_status = st.sidebar.selectbox('Select Case Type',
@@ -24,24 +24,8 @@ def app():
 
     fig = go.Figure()
 
-    if chart_visual == 'Line Chart':
-        if selected_status == 'confirmed_cases':
-            fig.add_trace(go.Scatter(x = data.county, 
-                                     y = data.confirmed_cases, 
-                                     name = 'confirmed_cases', 
-                                     mode = 'lines'))
-        if selected_status == 'probable_cases':
-            fig.add_trace(go.Scatter(x = data.county, 
-                                     y = data.probable_cases, 
-                                     name = 'probable_cases', 
-                                     mode = 'lines'))
-        if selected_status == 'fatalities':
-            fig.add_trace(go.Scatter(x = data.county, 
-                                     y = data.fatalities, 
-                                     name = 'fatalities', 
-                                     mode = 'lines'))
 
-    elif chart_visual == 'Bar Chart':
+    if chart_visual == 'Bar Chart':
         if selected_status == 'confirmed_cases':
             fig.add_trace(go.Bar(x = data.county,
                                  y = data.confirmed_cases, 

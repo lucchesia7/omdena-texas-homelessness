@@ -44,4 +44,4 @@ def app():
         fig = fig=px.violin(data, y='rate', color='fiscal_year', 
                             points='all', hover_name='demographic_category',
                             hover_data=['specific_demographic'])
-        st.plotly_chart(fig)
+        st.plotly_chart(fig)  

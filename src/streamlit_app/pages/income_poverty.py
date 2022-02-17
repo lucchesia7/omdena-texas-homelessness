@@ -17,7 +17,7 @@ def app():
     data = pd.read_csv(filepath)
 
     chart_visual = st.sidebar.selectbox("Select Charts/Plot Type", 
-                                        ("Line Chart", "Bar Chart", "Scatter Plot"))
+                                        ("Bar Chart", "Scatter Plot"))
 
     st.sidebar.checkbox("Show Analysis by Category", True, key=1)
     selected_status = st.sidebar.selectbox("Select a Category",
@@ -29,45 +29,7 @@ def app():
     
     fig = go.Figure()
 
-    if chart_visual == "Line Chart":
-        if selected_status == "Total Personal Income":
-            st.markdown("This graph helps to represent the total amount of income \
-                each individual makes by county in Texas. Highlights in this data would \
-                    indicate a larger amount of income flowing into that county.")
-            fig.add_trace(go.Scatter(x = data.county,
-                                     y = data.total_personal_income,
-                                     name = 'Total Personal Income by County in Texas',
-                                     mode= 'lines'))
-        if selected_status == "Median Household Income":
-            st.markdown("This graph represents the average household income by county \
-                in Texas. Highlights in this data would indicate a larger household income \
-                    within that county.")
-            fig.add_trace(go.Scatter(x = data.county,
-                                     y = data.median_household_income,
-                                     name = 'Median Household Income by County in Texas',
-                                     mode = 'lines'))
-        if selected_status == "Average Annual Pay":
-            st.markdown("This graph represents the average annual salaries within counties of Texas. \
-                Highlights in this data would represent a higher annual pay within that county.")
-            fig.add_trace(go.Scatter(x = data.county,
-                                     y = data.average_annual_pay,
-                                     name = 'Average Annual Income by County in Texas',
-                                     mode = 'lines'))
-        if selected_status == "Percentage of Population in Poverty":
-            st.markdown("This graph represents the percentage of the population living within poverty guidelines \
-                by county in Texas. Highlights in this data would indicate counties where the populous has higher risks of being homeless")
-            fig.add_trace(go.Scatter(x = data.county,
-                                     y = data.percentage_of_population_in_poverty,
-                                     name = 'Percentage of the Population Living in Poverty by County in Texas',
-                                     mode = 'lines'))
-        if selected_status == "Percentage of Population Under 18 in Poverty":
-            st.markdown("This graph represents the percentage of the population that is under the age of 18 living within poverty \
-                guidelines by county in Texas. Highlights in this data would indicate counties where the populous has higher risks of being \
-                    homeless.")
-            fig.add_trace(go.Scatter(x = data.county,
-                                     y = data.percentage_of_population_under_18_in_poverty,
-                                     name = 'Percentage of Population Under 18 Living in Poverty by County in Texas',
-                                     mode = 'lines'))
+
 
     if chart_visual == "Bar Chart":
         if selected_status == "Total Personal Income":
